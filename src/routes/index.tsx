@@ -2,8 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { useI18n, waLink, APP_URL, WA_CM, WA_BJ, type Lang } from "@/lib/i18n";
 const agrielevLogo = { url: "/agrielev-logo.png" };
-import cunismartApp from "@/assets/cunismart-app.png.asset.json";
-import cunismartShield from "@/assets/cunismart-shield.png.asset.json";
+const cunismartApp = { url: "/cunismart-app.png" };
+const cunismartShield = { url: "/cunismart-shield.png" };
 import {
   Bell, WifiOff, Layers, Sprout, FileBarChart, QrCode,
   TrendingUp, ShieldCheck, Code2, GraduationCap, HandHeart, Heart,
