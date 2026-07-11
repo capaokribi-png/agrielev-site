@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { useI18n, waLink, APP_URL, WA_CM, WA_BJ, type Lang } from "@/lib/i18n";
-import agrielevLogo from "@/assets/agrielev-logo.png.asset.json";
+const agrielevLogo = { url: "/agrielev-logo.png" };
 import cunismartApp from "@/assets/cunismart-app.png.asset.json";
 import cunismartShield from "@/assets/cunismart-shield.png.asset.json";
 import {
@@ -81,13 +81,24 @@ function Header() {
   ] as const;
   return (
     <header className="sticky top-0 z-50 border-b border-[color:var(--forest)]/10 bg-[color:var(--paper)]/85 backdrop-blur-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 lg:px-8">
-        <a href="#top" className="flex items-center gap-2" aria-label="AgriElev">
-          <img src={agrielevLogo.url} alt="AgriElev" className="h-10 w-auto sm:h-11" width={340} height={80} />
+      <div className="pointer-events-none absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-[color:var(--gold)]/60 to-transparent" />
+      <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 lg:flex lg:justify-between lg:px-8 lg:py-4">
+        <a href="#top" className="flex min-w-0 shrink-0 items-center" aria-label="AgriElev">
+          <img
+            src={agrielevLogo.url}
+            alt="AgriElev — logiciels AgriTech"
+            className="h-11 w-auto sm:h-14 lg:h-16"
+            width={520}
+            height={150}
+          />
         </a>
-        <nav className="hidden items-center gap-6 lg:flex">
+        <nav className="hidden items-center gap-7 lg:flex">
           {links.map(([href, label]) => (
-            <a key={href} href={href} className="text-sm font-medium text-[color:var(--ink)]/75 transition-colors hover:text-[color:var(--forest)]">
+            <a
+              key={href}
+              href={href}
+              className="relative text-sm font-semibold tracking-wide text-[color:var(--ink)]/75 transition-colors hover:text-[color:var(--forest)] after:absolute after:-bottom-1.5 after:left-0 after:h-0.5 after:w-0 after:bg-[color:var(--gold)] after:transition-all hover:after:w-full"
+            >
               {label}
             </a>
           ))}
@@ -453,7 +464,7 @@ function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-4 lg:px-8">
         <div>
           <a href="#top" className="flex items-center gap-3" aria-label="AgriElev">
-            <img src={agrielevLogo.url} alt="AgriElev" className="h-10 w-auto sm:h-11" width={340} height={80} />
+            <img src={agrielevLogo.url} alt="AgriElev" className="h-8 w-auto sm:h-10" width={340} height={80} />
           </a>
           <p className="mt-4 text-sm text-[color:var(--ink)]/70">{t("footer.tagline")}</p>
           <div className="mt-4"><LangToggle /></div>
