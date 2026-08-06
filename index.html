@@ -129,25 +129,54 @@ header{
 /* ---------- flagship / CuniSmart ---------- */
 .flagship{padding:110px 0;background:var(--cream-soft)}
 .flag-grid{display:grid;grid-template-columns:.94fr 1.06fr;gap:64px;align-items:center;margin-top:18px}
-.phone{
-  width:min(300px,84%);margin:0 auto;background:var(--forest-ink);border-radius:38px;
-  padding:14px;box-shadow:0 30px 70px rgba(22,53,30,.28),0 4px 14px rgba(22,53,30,.16);
+.phone-stage{position:relative;display:grid;place-items:center;padding:10px 0}
+.phone-stage::before{
+  content:"";position:absolute;width:78%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,rgba(127,184,143,.30),transparent 68%);z-index:0;
 }
-.phone-screen{background:#FBF8EE;border-radius:27px;overflow:hidden;font-size:11.5px}
-.ps-head{background:var(--forest);color:var(--cream);padding:16px 16px 13px}
-.ps-head .app{font-family:'Fraunces',serif;font-size:15px}
+.phone{
+  position:relative;z-index:1;
+  width:min(324px,80%);aspect-ratio:9/19.2;margin:0 auto;
+  background:linear-gradient(160deg,#20422A,#0E2113);border-radius:46px;padding:10px;
+  box-shadow:0 40px 80px rgba(22,53,30,.30),0 8px 22px rgba(22,53,30,.20),
+             inset 0 0 0 1.5px rgba(242,237,217,.10);
+}
+.phone::after{
+  content:"";position:absolute;top:22px;left:50%;transform:translateX(-50%);
+  width:74px;height:20px;background:#0E2113;border-radius:99px;z-index:3;
+}
+.phone-screen{
+  height:100%;background:#FBF8EE;border-radius:37px;overflow:hidden;
+  display:flex;flex-direction:column;font-size:12px;
+}
+.ps-head{background:var(--forest);color:var(--cream);padding:44px 18px 20px;flex:none}
+.ps-head .app{font-family:'Fraunces',serif;font-size:19px;letter-spacing:-.01em}
 .ps-head .app b{color:var(--gold);font-weight:600}
-.ps-head .hello{opacity:.72;font-size:10.5px;margin-top:2px}
-.ps-stats{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:13px 14px 5px}
-.ps-card{background:#fff;border:1px solid var(--hair);border-radius:12px;padding:10px 12px}
-.ps-card .n{font-family:'Fraunces',serif;font-size:19px;color:var(--forest-deep);font-weight:600}
-.ps-card .l{color:var(--muted);font-size:10px;letter-spacing:.04em}
-.ps-row{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--hair);border-radius:12px;padding:10px 12px;margin:9px 14px 0}
-.ps-dot{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;flex:none;font-size:14px}
-.ps-row .t{font-weight:600;color:var(--forest-deep);font-size:11.5px}
-.ps-row .s{color:var(--muted);font-size:10px}
-.ps-foot{padding:12px 14px 15px}
-.ps-btn{background:var(--gold);border-radius:10px;text-align:center;padding:9px;font-weight:700;color:var(--forest-ink);font-size:11.5px}
+.ps-head .hello{opacity:.7;font-size:11.5px;margin-top:4px}
+.ps-body{flex:1;overflow:hidden;padding:0 14px}
+.ps-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:-14px 0 12px}
+.ps-card{background:#fff;border:1px solid var(--hair);border-radius:15px;padding:13px 14px;box-shadow:0 3px 10px rgba(22,53,30,.06)}
+.ps-card .n{font-family:'Fraunces',serif;font-size:24px;color:var(--forest-deep);font-weight:600;line-height:1.1}
+.ps-card .l{color:var(--muted);font-size:10.5px;letter-spacing:.03em;margin-top:2px}
+.ps-label{
+  font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.16em;
+  color:var(--muted);text-transform:uppercase;margin:2px 0 9px;
+}
+.ps-row{
+  display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--hair);
+  border-radius:15px;padding:12px 13px;margin-bottom:9px;
+}
+.ps-dot{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;flex:none;font-size:17px}
+.ps-row .t{font-weight:600;color:var(--forest-deep);font-size:12.5px;line-height:1.25}
+.ps-row .s{color:var(--muted);font-size:10.5px;line-height:1.35;margin-top:1px}
+.ps-tabs{
+  flex:none;display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--hair);background:#fff;padding:11px 6px 20px;
+}
+.ps-tab{display:grid;place-items:center;gap:4px;font-size:9px;color:var(--muted);letter-spacing:.02em}
+.ps-tab i{font-style:normal;font-size:16px;opacity:.5}
+.ps-tab.on{color:var(--forest-deep);font-weight:700}
+.ps-tab.on i{opacity:1}
 .flag-feats{display:grid;grid-template-columns:1fr 1fr;gap:10px 26px;margin:30px 0 34px}
 .feat{display:flex;gap:11px;align-items:flex-start;font-size:15.5px}
 .feat svg{flex:none;margin-top:3px}
@@ -156,6 +185,48 @@ header{
   font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.05em;
   background:var(--leaf-soft);color:var(--forest-deep);border-radius:99px;padding:6px 13px;
 }
+
+/* ---------- stat band ---------- */
+.band{background:var(--forest-deep);color:var(--cream);padding:34px 0}
+.band-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;text-align:center}
+.band .n{font-family:'Fraunces',serif;font-size:clamp(28px,3.4vw,40px);color:var(--gold);line-height:1}
+.band .l{
+  font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:rgba(242,237,217,.66);margin-top:8px;
+}
+
+/* ---------- platform / roadmap ---------- */
+.platform{padding:110px 0;background:var(--cream);border-top:1px solid var(--hair)}
+.plat-head{max-width:660px;margin-bottom:50px}
+.plat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.mod{
+  background:#fff;border:1px solid var(--hair);border-radius:var(--radius);
+  padding:32px 30px;display:flex;flex-direction:column;position:relative;
+  transition:transform .25s,box-shadow .25s;
+}
+.mod:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(22,53,30,.10)}
+.mod-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.mod-ico{width:50px;height:50px;border-radius:15px;background:var(--leaf-soft);display:grid;place-items:center;font-size:22px}
+.tag{
+  font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+  border-radius:99px;padding:5px 11px;white-space:nowrap;
+}
+.tag-live{background:var(--forest);color:var(--cream)}
+.tag-soon{background:#F6E8C4;color:#7A5B04}
+.mod h3{margin-bottom:10px}
+.mod>p{color:var(--muted);font-size:15.5px}
+.mod ul{list-style:none;margin-top:18px;display:flex;flex-direction:column;gap:9px}
+.mod li{font-size:14px;color:var(--forest-deep);display:flex;gap:9px;align-items:baseline}
+.mod li::before{content:"↳";color:var(--gold);font-weight:700;flex:none}
+.mod-note{
+  margin-top:auto;padding-top:20px;font-size:13px;color:var(--muted);
+  border-top:1px dashed var(--hair);
+}
+.credit{
+  margin-top:34px;background:#fff;border:1px solid var(--hair);border-left:4px solid var(--gold);
+  border-radius:14px;padding:22px 26px;font-size:15px;color:var(--muted);
+}
+.credit b{color:var(--forest-deep)}
 
 /* ---------- pillars ---------- */
 .pillars{padding:110px 0;background:linear-gradient(180deg,var(--cream) 0%,var(--cream-soft) 100%);border-top:1px solid var(--hair)}
@@ -325,6 +396,7 @@ footer{background:var(--forest-ink);color:rgba(242,237,217,.72);padding:66px 0 4
     </a>
     <nav class="nav-links" id="navLinks">
       <a href="#cunismart" data-i="nav1"></a>
+      <a href="#plateforme" data-i="nav6"></a>
       <a href="#poles" data-i="nav2"></a>
       <a href="#modele" data-i="nav3"></a>
       <a href="#apropos" data-i="nav4"></a>
@@ -412,29 +484,43 @@ footer{background:var(--forest-ink);color:rgba(242,237,217,.72);padding:66px 0 4
     <span class="eyebrow reveal" data-i="flagEyebrow"></span>
     <div class="flag-grid">
       <div class="reveal">
-        <div class="phone" aria-hidden="true">
-          <div class="phone-screen">
-            <div class="ps-head">
-              <div class="app">Cuni<b>Smart</b></div>
-              <div class="hello" data-i="psHello"></div>
+        <div class="phone-stage">
+          <div class="phone" aria-hidden="true">
+            <div class="phone-screen">
+              <div class="ps-head">
+                <div class="app">Cuni<b>Smart</b></div>
+                <div class="hello" data-i="psHello"></div>
+              </div>
+              <div class="ps-body">
+                <div class="ps-stats">
+                  <div class="ps-card"><div class="n">128</div><div class="l" data-i="psK1"></div></div>
+                  <div class="ps-card"><div class="n">+18%</div><div class="l" data-i="psK2"></div></div>
+                </div>
+                <div class="ps-label" data-i="psToday"></div>
+                <div class="ps-row">
+                  <div class="ps-dot" style="background:#DDEAD9">🐇</div>
+                  <div><div class="t" data-i="psR1t"></div><div class="s" data-i="psR1s"></div></div>
+                </div>
+                <div class="ps-row">
+                  <div class="ps-dot" style="background:#F6E8C4">🌱</div>
+                  <div><div class="t" data-i="psR2t"></div><div class="s" data-i="psR2s"></div></div>
+                </div>
+                <div class="ps-row">
+                  <div class="ps-dot" style="background:#EADDD3">💊</div>
+                  <div><div class="t" data-i="psR3t"></div><div class="s" data-i="psR3s"></div></div>
+                </div>
+                <div class="ps-row">
+                  <div class="ps-dot" style="background:#D9E4EE">🌍</div>
+                  <div><div class="t" data-i="psR4t"></div><div class="s" data-i="psR4s"></div></div>
+                </div>
+              </div>
+              <div class="ps-tabs">
+                <div class="ps-tab on"><i>◎</i><span data-i="psT1"></span></div>
+                <div class="ps-tab"><i>🌱</i><span data-i="psT2"></span></div>
+                <div class="ps-tab"><i>◫</i><span data-i="psT3"></span></div>
+                <div class="ps-tab"><i>◍</i><span data-i="psT4"></span></div>
+              </div>
             </div>
-            <div class="ps-stats">
-              <div class="ps-card"><div class="n">128</div><div class="l" data-i="psK1"></div></div>
-              <div class="ps-card"><div class="n">+18%</div><div class="l" data-i="psK2"></div></div>
-            </div>
-            <div class="ps-row">
-              <div class="ps-dot" style="background:#DDEAD9">🐇</div>
-              <div><div class="t" data-i="psR1t"></div><div class="s" data-i="psR1s"></div></div>
-            </div>
-            <div class="ps-row">
-              <div class="ps-dot" style="background:#F6E8C4">🌱</div>
-              <div><div class="t" data-i="psR2t"></div><div class="s" data-i="psR2s"></div></div>
-            </div>
-            <div class="ps-row">
-              <div class="ps-dot" style="background:#EADDD3">💊</div>
-              <div><div class="t" data-i="psR3t"></div><div class="s" data-i="psR3s"></div></div>
-            </div>
-            <div class="ps-foot"><div class="ps-btn" data-i="psBtn"></div></div>
           </div>
         </div>
       </div>
@@ -457,6 +543,60 @@ footer{background:var(--forest-ink);color:rgba(242,237,217,.72);padding:66px 0 4
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============ STAT BAND ============ -->
+<section class="band">
+  <div class="wrap band-grid">
+    <div><div class="n">16</div><div class="l" data-i="b1"></div></div>
+    <div><div class="n">6</div><div class="l" data-i="b2"></div></div>
+    <div><div class="n">2</div><div class="l" data-i="b3"></div></div>
+    <div><div class="n">100%</div><div class="l" data-i="b4"></div></div>
+  </div>
+</section>
+
+<!-- ============ PLATFORM / ROADMAP ============ -->
+<section class="platform" id="plateforme">
+  <div class="wrap">
+    <div class="plat-head reveal">
+      <span class="eyebrow" data-i="plEyebrow"></span>
+      <h2 style="margin-top:16px" data-i="plTitle"></h2>
+      <p class="lead" style="margin-top:14px" data-i="plSub"></p>
+    </div>
+    <div class="plat-grid">
+      <div class="mod reveal">
+        <div class="mod-top">
+          <div class="mod-ico">◎</div>
+          <span class="tag tag-live" data-i="tagLive"></span>
+        </div>
+        <h3 data-i="m1t"></h3>
+        <p data-i="m1s"></p>
+        <ul><li data-i="m1a"></li><li data-i="m1b"></li><li data-i="m1c"></li></ul>
+        <div class="mod-note" data-i="m1n"></div>
+      </div>
+      <div class="mod reveal">
+        <div class="mod-top">
+          <div class="mod-ico">◫</div>
+          <span class="tag tag-soon" data-i="tagSoon"></span>
+        </div>
+        <h3 data-i="m2t"></h3>
+        <p data-i="m2s"></p>
+        <ul><li data-i="m2a"></li><li data-i="m2b"></li><li data-i="m2c"></li></ul>
+        <div class="mod-note" data-i="m2n"></div>
+      </div>
+      <div class="mod reveal">
+        <div class="mod-top">
+          <div class="mod-ico">◍</div>
+          <span class="tag tag-soon" data-i="tagSoon2"></span>
+        </div>
+        <h3 data-i="m3t"></h3>
+        <p data-i="m3s"></p>
+        <ul><li data-i="m3a"></li><li data-i="m3b"></li><li data-i="m3c"></li></ul>
+        <div class="mod-note" data-i="m3n"></div>
+      </div>
+    </div>
+    <p class="credit reveal" data-i-html="plCredit"></p>
   </div>
 </section>
 
@@ -528,7 +668,7 @@ footer{background:var(--forest-ink);color:rgba(242,237,217,.72);padding:66px 0 4
       <div class="display" data-i="viTitle"></div>
       <p data-i="viSub"></p>
       <div class="geo">
-        <span>CAMEROUN</span><span>BÉNIN</span><span data-i="geoAfr"></span><span>DIASPORA</span>
+        <span data-i="geo1"></span><span data-i="geo2"></span><span data-i="geo3"></span><span data-i="geo4"></span>
       </div>
     </div>
   </div>
@@ -618,23 +758,49 @@ footer{background:var(--forest-ink);color:rgba(242,237,217,.72);padding:66px 0 4
 <script>
 const I18N = {
 fr:{
-  nav1:"CuniSmart",nav2:"Nos pôles",nav3:"Notre modèle",nav4:"À propos",nav5:"Contact",
+  nav1:"CuniSmart",nav6:"La plateforme",nav2:"Nos pôles",nav3:"Notre modèle",nav4:"À propos",nav5:"Contact",
   navCta:"Essayer CuniSmart",
-  heroEyebrow:"AgriElev — AgriTech africaine",
+  heroEyebrow:"AgriElev — AgriTech panafricaine",
   heroTitle:"L'agriculture <em>intégrée et circulaire</em>, du logiciel au champ.",
   heroSub:"AgriElev conçoit des technologies, produit, distribue et forme. Une seule conviction : à la ferme, rien ne se perd — chaque maillon nourrit le suivant.",
   heroCta1:"Découvrir CuniSmart",heroCta2:"Explorer nos pôles",
-  meta1:"FONDÉE AU CAMEROUN",meta2:"ACTIVE AU BÉNIN",meta3:"FR · EN",
+  meta1:"OUVERT DANS 16 PAYS AFRICAINS",meta2:"UN OUTIL PAR ET POUR L'AFRIQUE",meta3:"FR · EN",
   loop1:"ÉLEVAGE",loop2:"FUMIER",loop3:"CULTURES",loop4:"REVENU",
   loopCore1:"CYCLE",loopCore2:"FERMÉ",
   flagEyebrow:"Produit phare — développé par AgriElev",
   flagTitle:"CuniSmart, l'application métier de l'éleveur-agriculteur africain.",
   flagSub:"Cheptel, reproduction, santé, finances, nutrition… et désormais vos cultures. CuniSmart transforme « je pense que ça marche » en « je sais exactement où j'en suis ».",
-  psHello:"Bonjour, votre ferme aujourd'hui",psK1:"Têtes au cheptel",psK2:"Marge ce mois",
+  psHello:"Bonjour — votre ferme aujourd'hui",psK1:"Têtes au cheptel",psK2:"Marge ce mois",
+  psToday:"À faire aujourd'hui",
   psR1t:"Reproduction",psR1s:"3 mises bas prévues cette semaine",
   psR2t:"Mes Cultures",psR2s:"Fertilisation maïs — parcelle 2",
   psR3t:"Santé",psR3s:"Rappel vaccin · lot B",
-  psBtn:"Ouvrir le tableau de bord",
+  psR4t:"Marché",psR4s:"2 acheteurs intéressés par votre récolte",
+  psT1:"Ferme",psT2:"Cultures",psT3:"Projets",psT4:"Marché",
+  b1:"Pays africains ouverts",b2:"Espèces gérées",b3:"Langues : FR · EN",b4:"Utilisable hors ligne",
+  plEyebrow:"La plateforme",
+  plTitle:"Gérer, décider, vendre — dans un même outil.",
+  plSub:"Gérer sa ferme est une chose. Savoir si un projet tient la route, et trouver à qui vendre, en sont deux autres. La plateforme AgriElev couvre les trois.",
+  tagLive:"Disponible",tagSoon:"En développement",tagSoon2:"En développement",
+  m1t:"Gestion — CuniSmart",
+  m1s:"Le cœur de la plateforme : piloter au quotidien son élevage, ses cultures, sa santé animale et ses finances.",
+  m1a:"Cheptel, reproduction, santé, nutrition",
+  m1b:"Module « Mes Cultures » : maraîchage et vivrier",
+  m1c:"Finances, marges et rapports professionnels",
+  m1n:"Disponible aujourd'hui, gratuit pour démarrer.",
+  m2t:"Étude de projet",
+  m2s:"Avant d'investir, savoir si le projet tient debout. L'utilisateur saisit les conditions réelles de son projet et obtient une lecture claire de sa faisabilité.",
+  m2a:"Simulation technique et économique : charges, cycles, seuil de rentabilité",
+  m2b:"Points de blocage identifiés et ajustements suggérés",
+  m2c:"Historique et retours d'expérience des exploitations déjà suivies",
+  m2n:"Adossé à notre pôle conseil, ingénierie et études de projets.",
+  m3t:"Marché & négoce",
+  m3s:"Le premier problème du producteur n'est plus de produire, mais de vendre. Ce module ouvre l'accès au marché — local, régional et international.",
+  m3a:"Mise en relation acheteurs / producteurs et offres groupées",
+  m3b:"Négoce transfrontalier avec les pays voisins",
+  m3c:"Traçabilité et qualité pour accéder aux marchés d'export",
+  m3n:"Adossé à nos pôles négoce, import-export et transformation.",
+  plCredit:"<b>Ces deux modules viennent de vous.</b> Ils ont été proposés par un membre de notre communauté, qui a rappelé une évidence de terrain : le vrai frein n'est pas la production, c'est la décision d'investir et l'accès au marché. Nous les avons inscrits à notre feuille de route — et nous continuons à écouter.",
   f1:"6 espèces gérées : lapins, poules, porcs, bovins, chèvres…",
   f2:"Module « Mes Cultures » : maraîchage et vivrier",
   f3:"Fonctionne hors connexion, données synchronisées",
@@ -677,12 +843,12 @@ fr:{
   abEyebrow:"À propos",
   abTitle:"Nés sur le terrain, pas dans un bureau.",
   abP1:"AgriElev est née d'un constat vécu : les éleveurs et agriculteurs africains travaillent dur, mais sans données fiables, leur travail reste <b>invisible</b> — pour eux-mêmes, pour les banques, pour les partenaires.",
-  abP2:"Nous sommes d'abord des <b>praticiens</b>. Notre fondateur élève ses propres lapins à Kribi et cultive ses parcelles : chaque fonctionnalité de CuniSmart, chaque intrant que nous distribuons est d'abord éprouvé sur nos propres fermes.",
+  abP2:"Nous sommes d'abord des <b>praticiens</b>. Nous élevons nos propres animaux et cultivons nos propres parcelles : chaque fonctionnalité de CuniSmart, chaque intrant que nous distribuons est d'abord éprouvé sur nos propres fermes.",
   abP3:"Notre ambition : bâtir l'écosystème qui accompagne l'éleveur-agriculteur africain <b>de la gestion quotidienne jusqu'à la croissance</b> — outil numérique, intrants, formation et accès au marché, dans une même chaîne.",
   viEyebrow:"Notre vision",
   viTitle:"L'écosystème de référence de l'éleveur-agriculteur africain.",
-  viSub:"Un continuum complet — logiciel, ferme, intrants, formation, financement — construit depuis l'Afrique francophone et ouvert sur le monde.",
-  geoAfr:"AFRIQUE",
+  viSub:"Un continuum complet — logiciel, ferme, intrants, formation, financement, accès au marché — bâti en Afrique, pour l'Afrique, et ouvert sur le monde.",
+  geo1:"AFRIQUE DE L'OUEST",geo2:"AFRIQUE CENTRALE",geo3:"AFRIQUE DE L'EST",geo4:"DIASPORA",
   vaEyebrow:"Nos valeurs",
   vaTitle:"Ce qui guide chacun de nos choix.",
   v1t:"Le terrain d'abord",v1s:"Nous sommes éleveurs et agriculteurs avant d'être éditeurs de logiciels. Tout part d'un besoin réel, observé et vécu.",
@@ -700,23 +866,49 @@ fr:{
   footTag:"L'AGRICULTURE INTÉGRÉE ET CIRCULAIRE",
 },
 en:{
-  nav1:"CuniSmart",nav2:"What we do",nav3:"Our model",nav4:"About",nav5:"Contact",
+  nav1:"CuniSmart",nav6:"The platform",nav2:"What we do",nav3:"Our model",nav4:"About",nav5:"Contact",
   navCta:"Try CuniSmart",
-  heroEyebrow:"AgriElev — African AgriTech",
+  heroEyebrow:"AgriElev — Pan-African AgriTech",
   heroTitle:"<em>Integrated, circular</em> farming — from software to soil.",
   heroSub:"AgriElev builds technology, farms, distributes and trains. One conviction: nothing goes to waste on the farm — every link feeds the next.",
   heroCta1:"Discover CuniSmart",heroCta2:"Explore what we do",
-  meta1:"FOUNDED IN CAMEROON",meta2:"ACTIVE IN BENIN",meta3:"FR · EN",
+  meta1:"OPEN IN 16 AFRICAN COUNTRIES",meta2:"BY AFRICA, FOR AFRICA",meta3:"FR · EN",
   loop1:"LIVESTOCK",loop2:"MANURE",loop3:"CROPS",loop4:"INCOME",
   loopCore1:"CLOSED",loopCore2:"LOOP",
   flagEyebrow:"Flagship product — built by AgriElev",
   flagTitle:"CuniSmart, the working app of the African farmer-breeder.",
   flagSub:"Herd, breeding, health, finances, nutrition… and now your crops. CuniSmart turns “I think it's working” into “I know exactly where I stand”.",
   psHello:"Good morning — your farm today",psK1:"Animals in herd",psK2:"Margin this month",
+  psToday:"To do today",
   psR1t:"Breeding",psR1s:"3 litters expected this week",
   psR2t:"My Crops",psR2s:"Maize fertilization — plot 2",
   psR3t:"Health",psR3s:"Vaccine reminder · batch B",
-  psBtn:"Open dashboard",
+  psR4t:"Market",psR4s:"2 buyers interested in your harvest",
+  psT1:"Farm",psT2:"Crops",psT3:"Projects",psT4:"Market",
+  b1:"African countries open",b2:"Species managed",b3:"Languages: FR · EN",b4:"Works offline",
+  plEyebrow:"The platform",
+  plTitle:"Manage, decide, sell — in one place.",
+  plSub:"Running a farm is one thing. Knowing whether a project stands up, and finding who will buy, are two others. The AgriElev platform covers all three.",
+  tagLive:"Available",tagSoon:"In development",tagSoon2:"In development",
+  m1t:"Management — CuniSmart",
+  m1s:"The core of the platform: run your livestock, crops, animal health and finances day to day.",
+  m1a:"Herd, breeding, health, nutrition",
+  m1b:"“My Crops” module: market gardening & food crops",
+  m1c:"Finances, margins and professional reports",
+  m1n:"Available today, free to start.",
+  m2t:"Project study",
+  m2s:"Before investing, know whether the project holds up. Users enter the real conditions of their project and get a clear read on its feasibility.",
+  m2a:"Technical and economic simulation: costs, cycles, break-even point",
+  m2b:"Bottlenecks identified, adjustments suggested",
+  m2c:"History and lessons learned from farms already tracked",
+  m2n:"Backed by our advisory, engineering and project-study line.",
+  m3t:"Market & trade",
+  m3s:"A producer's first problem is no longer growing, it's selling. This module opens market access — local, regional and international.",
+  m3a:"Buyer–producer matching and pooled offers",
+  m3b:"Cross-border trade with neighbouring countries",
+  m3c:"Traceability and quality for export markets",
+  m3n:"Backed by our trade, import-export and processing lines.",
+  plCredit:"<b>These two modules came from you.</b> They were proposed by a member of our community, who pointed out a hard truth from the field: the real barrier isn't production — it's the decision to invest, and access to a market. We've put them on our roadmap, and we're still listening.",
   f1:"6 species managed: rabbits, poultry, pigs, cattle, goats…",
   f2:"“My Crops” module: market gardening & food crops",
   f3:"Works offline, data syncs automatically",
@@ -759,12 +951,12 @@ en:{
   abEyebrow:"About us",
   abTitle:"Born in the field, not in an office.",
   abP1:"AgriElev was born from lived experience: African farmers and breeders work hard, but without reliable data their work remains <b>invisible</b> — to themselves, to banks, to partners.",
-  abP2:"We are <b>practitioners</b> first. Our founder raises his own rabbits in Kribi and farms his own plots: every CuniSmart feature and every input we distribute is proven on our own farms first.",
+  abP2:"We are <b>practitioners</b> first. We raise our own animals and farm our own plots: every CuniSmart feature and every input we distribute is proven on our own farms first.",
   abP3:"Our ambition: build the ecosystem that supports the African farmer-breeder <b>from daily management to growth</b> — digital tools, inputs, training and market access, in one chain.",
   viEyebrow:"Our vision",
   viTitle:"The reference ecosystem of the African farmer-breeder.",
-  viSub:"A complete continuum — software, farm, inputs, training, finance — built from francophone Africa and open to the world.",
-  geoAfr:"AFRICA",
+  viSub:"A complete continuum — software, farm, inputs, training, finance, market access — built in Africa, for Africa, open to the world.",
+  geo1:"WEST AFRICA",geo2:"CENTRAL AFRICA",geo3:"EAST AFRICA",geo4:"DIASPORA",
   vaEyebrow:"Our values",
   vaTitle:"What guides every choice we make.",
   v1t:"Field first",v1s:"We are farmers before we are software makers. Everything starts from a real, observed, lived need.",
